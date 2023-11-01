@@ -9,16 +9,8 @@ Setting up an entire Lumen stack can be time consuming. This repo is a quick way
 ## Clone this repo
 
 ```bash
-git clone https://github.com/saada/docker-lumen.git
+git clone 
 cd docker-lumen
-```
-
-## Create Lumen App
-
-now, create the app in the `images/php` directory named `app`
-
-```bash
-docker run --rm -it -v $(pwd)/images/php:/app $(docker build -q .) composer create-project --prefer-dist laravel/lumen ./app
 ```
 
 ### Configuration

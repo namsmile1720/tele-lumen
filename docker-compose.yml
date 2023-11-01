@@ -1,3 +1,4 @@
+version: '3'
 services:
   nginx:
     build: images/nginx
@@ -5,9 +6,10 @@ services:
     links:
       - php
     ports:
-      - "80:80"
+      - "8181:80"  # Thay đổi cổng 80 thành 8181
     volumes:
       - ./images/php/app/public:/var/www/html/app/public
+
   php:
     build: images/php
     volumes:
@@ -32,15 +34,17 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       MEMCACHED_HOST: cache
       CACHE_DRIVER: memcached
+
   db:
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password # needed as of mysql 8
     ports:
-      - "3306:3306"
+      - "2323:3306"  # Thay đổi cổng 3306 thành 2323
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
   cache:
     image: memcached:1.6-alpine
